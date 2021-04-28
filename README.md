@@ -1,6 +1,6 @@
 # Crypt-Share
 
-##Current Objectives
+## Current Objectives
 1) BSIC UI 
 2) Authentication
 3) Simple Chat UI
