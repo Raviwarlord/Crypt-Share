@@ -1,55 +1,58 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import type {Node} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
+  Button,
+  Image,
   Text,
-  useColorScheme,
   View,
+  TextInput,
+  TouchableOpacity,
 } from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import Login from './screens/Login';
 
 const App = () => {
-  return (
-    <SafeAreaView>
-      <StatusBar/>
-      <ScrollView>
-        {/* <Header /> */}
-        <View style={styles.sectionContainer}>
-          <View>
-            <Text style={styles.helloWorldStye}>Welcome to the Crypt-Share Platform</Text>
-          </View>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
+  const [emailText, setEmailText] = React.useState(null);
+  const [passwordText, setPasswordText] = React.useState(null);
+
+  const checkLogin = () => {};
+
+  return <Login></Login>;
 };
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+    flex: 1,
+    backgroundColor: '#282828',
   },
-  helloWorldStye: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  viewContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  imageStyle: {
+    height: 300,
+    width: 300,
+  },
+  textStyle: {
+    color: 'cyan',
+    fontSize: 17,
+  },
+  buttonStyle: {
+    width: 210,
+    borderRadius: 20,
+    margin: 10,
+  },
+  textInputStyle: {
+    margin: 9,
+    color: 'white',
+    height: 43,
+    borderColor: 'cyan',
+    paddingLeft: 20,
+    width: 300,
+    borderWidth: 1,
+    borderRadius: 20,
   },
   sectionTitle: {
     fontSize: 24,
