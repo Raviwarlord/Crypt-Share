@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Login from './screens/Login';
+import Signup from './screens/Signup'
 
 const App = () => {
   const [emailText, setEmailText] = React.useState(null);
