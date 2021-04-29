@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "558190995431",
+    "project_id": "crypt-share",
+    "storage_bucket": "crypt-share.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558190995431:android:1d290b6707e898bfa2bf42",
+        "android_client_info": {
+          "package_name": "com.cryptshare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "558190995431-bn062l35num23ofesr7e9jqt3pl0d5jp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEM2j0-k3-y7ZdZffFnYtS-hWcW2AgWxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "558190995431-bn062l35num23ofesr7e9jqt3pl0d5jp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

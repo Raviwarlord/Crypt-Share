@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import {
   SafeAreaView,
@@ -10,15 +11,23 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Login from './screens/Login';
-import Signup from './screens/Signup'
+import SignUp from './screens/Signup';
+import Home from './screens/Home';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import TabNavigator from './screens/TabNavigator';
 
 const App = () => {
-  const [emailText, setEmailText] = React.useState(null);
-  const [passwordText, setPasswordText] = React.useState(null);
-
-  const checkLogin = () => {};
-
-  return <Login></Login>;
+  const Stack = createStackNavigator();
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="LoginScreen" component={Login} />
+        <Stack.Screen name="SignUpScreen" component={SignUp} />
+        <Stack.Screen name="TabNavigator" component={TabNavigator} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 };
 
 const styles = StyleSheet.create({

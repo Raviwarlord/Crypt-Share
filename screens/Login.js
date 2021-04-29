@@ -10,11 +10,15 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const Login = () => {
+const Login = ({navigation}) => {
   const [emailText, setEmailText] = React.useState(null);
   const [passwordText, setPasswordText] = React.useState(null);
 
-  const checkLogin = () => {};
+  const checkLogin = () => {
+    setEmailText(null);
+    setPasswordText(null);
+    navigation.navigate('TabNavigator');
+  };
 
   return (
     <SafeAreaView style={styles.sectionContainer}>
@@ -34,6 +38,10 @@ const Login = () => {
         <TextInput
           value={passwordText}
           style={styles.textInputStyle}
+          secureTextEntry={true}
+          ref={ref =>
+            ref && ref.setNativeProps({style: {fontFamily: 'robot-regular'}})
+          }
           onChangeText={event => {
             setPasswordText(event);
           }}
@@ -45,13 +53,16 @@ const Login = () => {
             title="Sign In"
             color="#758283"
             onPress={() => {
-              console.log(emailText);
-              console.log(passwordText);
               checkLogin(emailText, passwordText);
             }}
           />
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            setEmailText(null);
+            setPasswordText(null);
+            navigation.navigate('SignUpScreen');
+          }}>
           <View
             style={{
               padding: 8,
