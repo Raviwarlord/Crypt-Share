@@ -10,6 +10,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import auth from '@react-native-firebase/auth';
 
 const SignUp = ({navigation}) => {
   const [emailText, setEmailText] = React.useState(null);
@@ -17,12 +18,24 @@ const SignUp = ({navigation}) => {
   const [confirmPasswordText, setConfirmPasswordText] = React.useState(null);
   const [userName, setUserName] = React.useState(null);
 
-  const handleSignUp = () => {
-    setEmailText(null);
-    setPasswordText(null);
-    setConfirmPasswordText(null);
-    setUserName(null);
-    navigation.navigate('HomeScreen');
+  const handleSignUp = async () => {
+    if (passwordText === confirmPasswordText) {
+      const response = await auth()
+        .createUserWithEmailAndPassword(emailText, passwordText)
+        .catch(error => {
+          alert(error);
+        });
+
+      if (response !== undefined) {
+        setEmailText(null);
+        setPasswordText(null);
+        setConfirmPasswordText(null);
+        setUserName(null);
+        navigation.navigate('TabNavigator');
+      }
+    } else {
+      alert('Passwords Do no match');
+    }
   };
 
   return (

@@ -9,16 +9,26 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import auth from '@react-native-firebase/auth';
 
 const Login = ({navigation}) => {
   const [emailText, setEmailText] = React.useState(null);
   const [passwordText, setPasswordText] = React.useState(null);
+  const [dis, setDisabled] = React.useState(false);
 
-  const checkLogin = () => {
-    setEmailText(null);
-    setPasswordText(null);
-    navigation.navigate('TabNavigator');
-  };
+  async function checkLogin(emailText, passWordText) {
+    const response = await auth()
+      .signInWithEmailAndPassword(emailText, passWordText)
+      .catch(error => {
+        alert(error);
+      });
+
+    if (response !== undefined) {
+      setEmailText(null);
+      setPasswordText(null);
+      navigation.navigate('TabNavigator');
+    }
+  }
 
   return (
     <SafeAreaView style={styles.sectionContainer}>
@@ -52,10 +62,12 @@ const Login = ({navigation}) => {
           <Button
             title="Sign In"
             color="#758283"
+            disabled={dis}
             onPress={() => {
               checkLogin(emailText, passwordText);
             }}
           />
+          <Button title="Click Me!!" color="#758283" onPress={() => {}} />
         </View>
         <TouchableOpacity
           onPress={() => {
