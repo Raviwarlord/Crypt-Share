@@ -4,12 +4,41 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Send from './Send';
 import Receive from './Receive';
 import Home from './Home';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
 
   return (
-    <Tab.Navigator initialRouteName={Home}>
+    <Tab.Navigator 
+      initialRouteName={Home}
+
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === 'HomeScreen') {
+            console.log("vishal")
+            iconName = 'home'
+          } else if (route.name === 'SendScreen') {
+            iconName = "share"
+          }
+          else if( route.name === 'ReceiveScreen'){
+            iconName = 'cloud-download'
+          }
+          // You can return any component that you like here!
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: '#0abde3',
+        inactiveTintColor: 'gray',
+        style: {
+          backgroundColor: '#303030',
+        }
+      }}
+      
+    >
       <Tab.Screen name="HomeScreen" component={Home} />
       <Tab.Screen name="SendScreen" component={Send} />
       <Tab.Screen name="ReceiveScreen" component={Receive} />
@@ -27,7 +56,7 @@ const styles = StyleSheet.create({
   textStyle: {
     color: 'cyan',
     fontWeight: 'bold',
-  },
+  }
 });
 
 export default TabNavigator;
