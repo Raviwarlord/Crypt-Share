@@ -10,22 +10,20 @@ const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
 
   return (
-    <Tab.Navigator 
+    <Tab.Navigator
       initialRouteName={Home}
-
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+      screenOptions={({route}) => ({
+        tabBarIcon: ({color, size}) => {
           let iconName;
-          if (route.name === "HomeScreen") {
-           // console.log("vishal")
-            iconName = 'home'
-          } else if (route.name === "SendScreen") {
-            iconName = "share"
+          if (route.name === 'HomeScreen') {
+            // console.log("vishal")
+            iconName = 'home';
+          } else if (route.name === 'SendScreen') {
+            iconName = 'share';
+          } else if (route.name === 'ReceiveScreen') {
+            iconName = 'cloud-download';
           }
-          else if( route.name === "ReceiveScreen"){
-            iconName = 'cloud-download'
-          }
-          // You can return any component that you like here!
+
           return <Ionicons name={iconName} size={size} color={color} />;
         },
       })}
@@ -34,10 +32,8 @@ const TabNavigator = () => {
         inactiveTintColor: 'gray',
         style: {
           backgroundColor: '#303030',
-        }
-      }}
-      
-    >
+        },
+      }}>
       <Tab.Screen name="HomeScreen" component={Home} />
       <Tab.Screen name="SendScreen" component={Send} />
       <Tab.Screen name="ReceiveScreen" component={Receive} />
@@ -55,7 +51,7 @@ const styles = StyleSheet.create({
   textStyle: {
     color: 'cyan',
     fontWeight: 'bold',
-  }
+  },
 });
 
 export default TabNavigator;

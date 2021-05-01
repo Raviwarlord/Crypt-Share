@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   SafeAreaView,
   StyleSheet,
@@ -11,6 +10,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import {RSA} from 'react-native-rsa-native';
 
 const SignUp = ({navigation}) => {
   const [emailText, setEmailText] = React.useState(null);
@@ -27,6 +28,30 @@ const SignUp = ({navigation}) => {
         });
 
       if (response !== undefined) {
+        // generating private and public keys
+        const keys = await RSA.generateKeys(2048);
+        let private_key = keys.private.toString();
+        let public_key = keys.public.toString();
+
+        // adding user to firestore database
+        const user = auth().currentUser;
+        console.log(user);
+        firestore()
+          .collection('userDetails')
+          .doc(user.uid)
+          .set({
+            userName: userName,
+            email: emailText,
+            password: passwordText,
+            publicKey: public_key,
+            privateKey: private_key,
+          })
+          .then(console.log(user.uid))
+          .catch(error => {
+            console.log(error);
+          });
+
+        // cleanup and navigation
         setEmailText(null);
         setPasswordText(null);
         setConfirmPasswordText(null);

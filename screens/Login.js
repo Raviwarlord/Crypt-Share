@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
+import {RSA} from 'react-native-rsa-native';
 
 const Login = ({navigation}) => {
   const [emailText, setEmailText] = React.useState(null);
@@ -67,7 +68,14 @@ const Login = ({navigation}) => {
               checkLogin(emailText, passwordText);
             }}
           />
-          <Button title="Click Me!!" color="#758283" onPress={() => {}} />
+          {/* <Button
+            title="Click Me!!"
+            color="#758283"
+            onPress={async () => {
+              const keys = await RSA.generateKeys(2048);
+              console.log(keys);
+            }}
+          /> */}
         </View>
         <TouchableOpacity
           onPress={() => {

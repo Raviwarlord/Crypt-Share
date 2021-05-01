@@ -22,9 +22,36 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="LoginScreen" component={Login} />
-        <Stack.Screen name="SignUpScreen" component={SignUp} />
-        <Stack.Screen name="TabNavigator" component={TabNavigator} />
+        <Stack.Screen
+          name="LoginScreen"
+          options={{
+            title: 'Welcome',
+            headerShown: false,
+          }}
+          component={Login}
+        />
+        <Stack.Screen
+          name="SignUpScreen"
+          options={{
+            title: 'Welcome',
+            headerShown: false,
+          }}
+          component={SignUp}
+        />
+        <Stack.Screen
+          name="TabNavigator"
+          options={{
+            title: 'Crypt-Share',
+            headerTitleAlign: 'center',
+            headerTransparent: true,
+            headerBackTitle: 'back',
+            headerStyle: {
+              backgroundColor: '#303030',
+            },
+            headerTintColor: 'cyan',
+          }}
+          component={TabNavigator}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
